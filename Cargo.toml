@@ -1,0 +1,28 @@
+[package]
+name = "libjasper-sys"
+version = "0.1.0"
+edition = "2021"
+build = "build/main.rs"
+
+[features]
+default = ["build_cc"]
+build = []
+build_native = ["build"]
+build_cc = ["build", "base"]
+base = []
+bmp = []
+jp2 = []
+jpc = []
+jpg = []
+heic = []
+mif = []
+pgx = []
+ras = []
+
+[build-dependencies]
+cc = { version = "1.0.77", features = ["parallel"] }
+bindgen = { version = "0.63.0" }
+thiserror = "1.0.37"
+
+[dependencies]
+cc = { version = "1.0.77", features = ["parallel"] }
