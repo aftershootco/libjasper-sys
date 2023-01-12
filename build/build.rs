@@ -32,7 +32,7 @@ pub fn build(out_dir: impl AsRef<Path>, jasper_dir: impl AsRef<Path>) -> Result<
 
     // Put the include dirs in the DEP_JASPER_INCLUDE
     let include = std::env::join_paths([p1, p2])?;
-    println!("cargo:include={:?}", include);
+    println!("cargo:include={}", include.to_string_lossy());
 
     // jasper.define("JAS_EXPORT", None);
     // jasper.define("JAS_LOCAL", None);
