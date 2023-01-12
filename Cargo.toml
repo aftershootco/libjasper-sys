@@ -2,7 +2,13 @@
 name = "libjasper-sys"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
 build = "build/main.rs"
+publish = ["ktra"]
+homepage = "https://github.com/aftershootco/libjasper-sys"
+repository = "https://github.com/aftershootco/libjasper-sys"
+description = "Bindings to the c api for libjasper"
+links = "jasper"
 
 [features]
 default = ["build_cc_all"]

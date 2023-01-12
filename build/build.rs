@@ -26,6 +26,14 @@ pub fn build(out_dir: impl AsRef<Path>, jasper_dir: impl AsRef<Path>) -> Result<
 
     jasper.include(concat!(env!("CARGO_MANIFEST_DIR"), "/config"));
     jasper.include("include");
+    let p1: &Path = concat!(env!("CARGO_MANIFEST_DIR"), "/config").as_ref();
+    let p2 = std::env::current_dir()?.join("include");
+    let p2: &Path = p2.as_ref();
+
+    // Put the include dirs in the DEP_JASPER_INCLUDE
+    let include = std::env::join_paths([p1, p2])?;
+    println!("cargo:include={:?}", include);
+
     // jasper.define("JAS_EXPORT", None);
     // jasper.define("JAS_LOCAL", None);
     // dbg!(std::fs::read_dir(".")?.collect::<Vec<_>>());

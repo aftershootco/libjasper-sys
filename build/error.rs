@@ -37,6 +37,8 @@ pub enum ErrorKind {
     VarError(#[from] std::env::VarError),
     #[error("Failed to clone the git repo")]
     CloneError,
+    #[error("{0}")]
+    Join(#[from] std::env::JoinPathsError),
     #[error("{0:?}")]
     AnyErr(AnyErr),
 }
