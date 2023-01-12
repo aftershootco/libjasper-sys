@@ -5,15 +5,16 @@ edition = "2021"
 build = "build/main.rs"
 
 [features]
-default = ["build_cc"]
+default = ["build_cc", "all"]
 build = []
 build_native = ["build"]
 build_cc = ["build", "base"]
+all = ["build_cc", "base", "bmp", "jp2", "jpc", "jpg", "mif", "pgx", "ras"]
 base = []
 bmp = []
 jp2 = []
 jpc = []
-jpg = []
+jpg = ["dep:mozjpeg-sys"]
 heic = []
 mif = []
 pgx = []
@@ -26,3 +27,4 @@ thiserror = "1.0.37"
 
 [dependencies]
 cc = { version = "1.0.77", features = ["parallel"] }
+mozjpeg-sys = { version = "1.0.3", features = ["jpeg80_abi"], optional = true }

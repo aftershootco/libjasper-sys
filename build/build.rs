@@ -44,6 +44,10 @@ pub fn build(out_dir: impl AsRef<Path>, jasper_dir: impl AsRef<Path>) -> Result<
 
     #[cfg(feature = "jpg")]
     jasper.files(JPG);
+    #[cfg(feature = "jpg")]
+    if let Ok(path) = std::env::var("DEP_JPEG_INCLUDE") {
+        jasper.includes(std::env::split_paths(&path));
+    }
 
     #[cfg(feature = "heic")]
     jasper.files(HEIC);
